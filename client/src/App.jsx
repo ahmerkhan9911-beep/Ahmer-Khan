@@ -3,36 +3,28 @@ import React from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Skills from "./components/Skills";
 import Services from "./components/Services";
-import Portfolio from "./components/Portfolio";
+import Works from "./components/Works";
 import Testimonials from "./components/Testimonials";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
+    <div className="relative min-h-screen text-white noise">
       <Navbar />
-      <div id="home">
+      <main>
         <Hero />
-      </div>
-      <div id="about">
         <About />
-      </div>
-      <div id="services">
+        <Skills />
         <Services />
-      </div>
-      <div id="portfolio">
-        <Portfolio />
-      </div>
-      <div id="testimonials">
+        <Works />
         <Testimonials />
-      </div>
-      <div id="contact">
         <Contact />
-      </div>
+      </main>
       <Footer />
-    </>
+    </div>
   );
 }
 

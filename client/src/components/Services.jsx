@@ -1,85 +1,50 @@
-import React from "react";
 import { motion } from "framer-motion";
-import {
-  MonitorSmartphone,
-  Code,
-  ShoppingCart,
-} from "lucide-react";
+import { SectionHeader } from "./Section";
+import { Palette, Globe, Layout, Code2, Smartphone, ShoppingBag } from "lucide-react";
 
 const services = [
-  {
-    icon: <MonitorSmartphone size={48} />,
-    title: "Web & Mobile Design",
-    desc: "Designing responsive, modern UIs for both web and mobile apps.",
-    backText: "Figma, Tailwind, Responsive Layouts, UX Research",
-  },
-  {
-    icon: <Code size={48} />,
-    title: "Web Development",
-    desc: "Building fast, scalable websites using modern stacks like React.",
-    backText: "React, Vite, Framer Motion, Firebase, MongoDB",
-  },
-  {
-    icon: <ShoppingCart size={48} />,
-    title: "E-commerce",
-    desc: "Creating custom e-commerce solutions with payment & cart systems.",
-    backText: "Stripe, Shopify, Custom Cart Flow, Admin Panels",
-  },
+  { icon: Palette, title: "UI/UX Design", desc: "Designing thoughtful, accessible interfaces grounded in user research." },
+  { icon: Layout, title: "Website Design", desc: "Modern responsive layouts that feel polished on every screen." },
+  { icon: Code2, title: "Frontend Development", desc: "Production-ready React, Vite and Tailwind builds with clean code." },
+  { icon: Smartphone, title: "Web & Mobile UI", desc: "Responsive UIs for web and native-feeling mobile experiences." },
+  { icon: Globe, title: "Landing Page Design", desc: "High-converting landing pages crafted around your brand story." },
+  { icon: ShoppingBag, title: "E-commerce", desc: "Custom storefronts with cart, payments and admin flows." },
 ];
 
 const Services = () => {
   return (
-    <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
-      viewport={{ once: true }}
-      className="bg-[#3b2930] text-white py-20 px-6 md:px-20"
-    >
-      <div className="max-w-[1440px] mx-auto">
-        <motion.h2
-          initial={{ y: -20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="text-3xl font-semibold mb-12 text-center"
-        >
-          My Services
-        </motion.h2>
+    <section id="services" className="relative py-28">
+      <div className="container mx-auto px-6 max-w-6xl">
+        <SectionHeader
+          eyebrow="Services"
+          title={<>What I <span className="gradient-text">do best</span></>}
+          subtitle="End-to-end product work — from first sketch to shipped interface."
+        />
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((s, i) => (
             <motion.div
-              key={index}
+              key={s.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.2 }}
-              viewport={{ once: true }}
-              className="flip-card"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              whileHover={{ y: -6 }}
+              className="group relative glass rounded-3xl p-7 overflow-hidden"
             >
-              <div className="flip-card-inner">
-                {/* Front Side */}
-                <div className="flip-card-front border border-[#c2926b] p-8 text-center rounded bg-transparent">
-                  <div className="text-[#c2926b] mb-6">{service.icon}</div>
-                  <h3 className="text-xl font-semibold text-[#c2926b] mb-4">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed">
-                    {service.desc}
-                  </p>
+              <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/30 group-hover:to-purple-500/20 blur-2xl transition-all duration-500" />
+              <div className="relative">
+                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-white/10 mb-5 group-hover:scale-110 transition">
+                  <s.icon className="h-5 w-5 text-cyan-300" />
                 </div>
-
-                {/* Back Side */}
-                <div className="flip-card-back border border-[#c2926b] p-8 text-center rounded bg-[#c2926b] text-black">
-                  <h4 className="text-lg font-semibold mb-3">{service.title}</h4>
-                  <p className="text-sm">{service.backText}</p>
-                </div>
+                <h3 className="font-display text-xl font-semibold mb-2">{s.title}</h3>
+                <p className="text-sm text-white/60 leading-relaxed">{s.desc}</p>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

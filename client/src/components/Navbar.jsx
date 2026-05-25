@@ -1,133 +1,131 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-scroll";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+const links = [
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About" },
+  { href: "#skills", label: "Skills" },
+  { href: "#services", label: "Services" },
+  { href: "#works", label: "Works" },
+  { href: "#contact", label: "Contact" },
+];
 
 const Navbar = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", onScroll);
+    const onScroll = () => {
+      setScrolled(window.scrollY > 24);
+      const sections = links.map((l) => l.href.slice(1));
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 120 && rect.bottom >= 120) {
+          setActive(id);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navLinks = [
-    { to: "home", label: "Home" },
-    { to: "about", label: "About" },
-    { to: "services", label: "Services" },
-    { to: "portfolio", label: "Portfolio" },
-    { to: "contact", label: "Contact" },
-  ];
-
   return (
-    <nav
-      className={`fixed top-0 left-0 w-full z-50 px-8 md:px-20 py-6 flex justify-between items-center text-[#c2926b] transition-all duration-300 ${
-        isScrolled ? "bg-[#311e25] shadow-sm" : "bg-transparent"
-      }`}
+    <motion.header
+      initial={{ y: -40, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4"
     >
-      {/* Logo */}
-      <Link
-        to="home"
-        spy={true}
-        smooth="easeInOutQuart"
-        offset={-100}
-        duration={300}
-        className="text-4xl font-bold cursor-pointer"
+      <nav
+        className={`flex w-full max-w-6xl items-center justify-between rounded-full border border-white/10 px-5 py-3 transition-all ${
+          scrolled ? "glass shadow-lg shadow-black/30" : "bg-transparent"
+        }`}
       >
-        AHMER.
-      </Link>
+        <a href="#home" className="flex items-center gap-2 font-display text-lg font-bold">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 text-[#050816]">
+            A
+          </span>
+          <span className="hidden sm:inline">Ahmer<span className="gradient-text">.</span></span>
+        </a>
 
-      {/* Desktop Nav Links */}
-      <ul className="hidden min-[889px]:flex gap-6 text-lg">
-        {navLinks.map(({ to, label }) => (
-          <li key={to}>
-            <Link
-              to={to}
-              spy={true}
-              smooth="easeInOutQuart"
-              offset={-100}
-              duration={300}
-              className="hover:text-white cursor-pointer"
-            >
-              {label}
-            </Link>
-          </li>
-        ))}
-      </ul>
-
-      {/* Let’s Talk Button (Desktop) */}
-      <Link
-        to="contact"
-        spy={true}
-        smooth="easeInOutQuart"
-        offset={-100}
-        duration={300}
-        className="border border-[#c2926b] px-10 py-3 text-sm hover:bg-[#c2926b] hover:text-black transition-all min-[889px]:block hidden cursor-pointer"
-      >
-        Let’s Talk
-      </Link>
-
-      {/* Hamburger Icon */}
-      <button
-        onClick={() => setMenuOpen(!menuOpen)}
-        className="block min-[889px]:hidden focus:outline-none z-50 relative w-8 h-6"
-        aria-label="Toggle menu"
-      >
-        <motion.span
-          animate={menuOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-          className="absolute w-full h-0.5 bg-[#c2926b] left-0 top-0"
-        />
-        <motion.span
-          animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-          transition={{ duration: 0.2 }}
-          className="absolute w-full h-0.5 bg-[#c2926b] left-0 top-1/2 transform -translate-y-1/2"
-        />
-        <motion.span
-          animate={menuOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-          className="absolute w-full h-0.5 bg-[#c2926b] left-0 bottom-0"
-        />
-      </button>
-
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-[#311e25] bg-opacity-95 flex flex-col items-center justify-center gap-8 text-2xl text-[#c2926b] min-[889px]:hidden z-40"
-          >
-            {navLinks.map(({ to, label }) => (
-              <Link
-                key={to}
-                to={to}
-                spy={true}
-                smooth="easeInOutQuart"
-                offset={-100}
-                duration={300}
-                className="hover:text-white transition-all duration-200 cursor-pointer"
-                onClick={() => setMenuOpen(false)}
+        <ul className="hidden md:flex items-center gap-1 rounded-full bg-white/5 p-1">
+          {links.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                className={`relative inline-block rounded-full px-4 py-1.5 text-sm transition-colors ${
+                  active === l.href.slice(1)
+                    ? "text-white"
+                    : "text-white/60 hover:text-white"
+                }`}
               >
-                {label}
-              </Link>
-            ))}
-            <Link
-              to="contact"
-              spy={true}
-              smooth="easeInOutQuart"
-              offset={-100}
-              duration={300}
-              className="border border-[#c2926b] px-10 py-3 text-sm hover:bg-[#c2926b] hover:text-black transition-all cursor-pointer"
-              onClick={() => setMenuOpen(false)}
-            >
-              Let’s Talk
-            </Link>
+                {active === l.href.slice(1) && (
+                  <motion.span
+                    layoutId="nav-pill"
+                    className="absolute inset-0 -z-10 rounded-full bg-gradient-to-r from-cyan-500/30 to-purple-500/30 border border-white/10"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
+                {l.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="#contact"
+          className="hidden md:inline-flex items-center rounded-full bg-white text-[#050816] px-5 py-2 text-sm font-semibold hover:bg-white/90 transition"
+        >
+          Hire Me
+        </a>
+
+        <button
+          onClick={() => setOpen((v) => !v)}
+          className="md:hidden grid h-9 w-9 place-items-center rounded-full bg-white/10"
+          aria-label="Toggle menu"
+        >
+          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+        </button>
+      </nav>
+
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute top-20 left-4 right-4 md:hidden glass rounded-2xl p-4"
+          >
+            <ul className="flex flex-col gap-1">
+              {links.map((l) => (
+                <li key={l.href}>
+                  <a
+                    href={l.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-xl px-4 py-3 text-sm hover:bg-white/10"
+                  >
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="mt-2 inline-flex items-center justify-center rounded-xl bg-white text-[#050816] px-4 py-3 text-sm font-semibold"
+              >
+                Hire Me
+              </a>
+            </ul>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.header>
   );
 };
 
