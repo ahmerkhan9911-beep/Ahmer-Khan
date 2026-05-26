@@ -21,15 +21,15 @@ const groups = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="relative py-28">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="skills" className="relative py-16 sm:py-28">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         <SectionHeader
           eyebrow="Skills & Tools"
           title={<>My <span className="gradient-text">toolkit</span></>}
           subtitle="The technologies and tools I use to bring ideas to life."
         />
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
           {groups.map((g, gi) => (
             <motion.div
               key={g.title}
@@ -37,7 +37,7 @@ const Skills = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: gi * 0.1 }}
-              className="glass rounded-3xl p-6"
+              className="glass rounded-3xl p-5 sm:p-6"
             >
               <div className="flex items-center gap-3 mb-5">
                 <span className={`h-2 w-2 rounded-full bg-gradient-to-r ${g.color}`} />

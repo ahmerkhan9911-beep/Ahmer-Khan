@@ -11,8 +11,8 @@ const stats = [
 
 const About = () => {
   return (
-    <section id="about" className="relative py-28">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="about" className="relative py-16 sm:py-28">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         <SectionHeader
           eyebrow="About me"
           title={<>The person <span className="gradient-text">behind the pixels</span></>}
@@ -24,9 +24,9 @@ const About = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="glass rounded-3xl p-8"
+            className="glass rounded-3xl p-5 sm:p-8"
           >
-            <h3 className="font-display text-2xl font-semibold mb-4">
+            <h3 className="font-display text-xl sm:text-2xl font-semibold mb-4">
               I'm a Web Developer who loves building clean, responsive & unique websites.
             </h3>
             <p className="text-white/70 leading-relaxed">
@@ -48,7 +48,7 @@ const About = () => {
             </a>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {stats.map((s, i) => (
               <motion.div
                 key={s.label}
@@ -56,12 +56,12 @@ const About = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="glass rounded-2xl p-6 hover:bg-white/[0.07] transition group"
+                className="glass rounded-2xl p-4 sm:p-6 hover:bg-white/[0.07] transition group"
               >
                 <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-to-br from-cyan-500/20 to-purple-500/20 border border-white/10 mb-4 group-hover:scale-110 transition">
                   <s.icon className="h-5 w-5 text-cyan-300" />
                 </div>
-                <div className="font-display text-3xl font-bold gradient-text">{s.value}</div>
+                <div className="font-display text-2xl sm:text-3xl font-bold gradient-text">{s.value}</div>
                 <div className="mt-1 text-sm text-white/60">{s.label}</div>
               </motion.div>
             ))}

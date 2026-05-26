@@ -91,15 +91,15 @@ const Works = () => {
   const visibleWorks = showAll ? works : works.slice(0, 6);
 
   return (
-    <section id="works" className="relative py-28">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="works" className="relative py-16 sm:py-28">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         <SectionHeader
           eyebrow="Selected Works"
           title={<>Recent <span className="gradient-text">projects</span></>}
           subtitle="A selection of work spanning marketing sites, product UIs and e-commerce."
         />
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
           {visibleWorks.map((w, i) => (
             <motion.a
               key={w.title}
@@ -129,7 +129,7 @@ const Works = () => {
                     <ArrowUpRight className="h-4 w-4" />
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <h3 className="font-display text-xl font-semibold">{w.title}</h3>
                   <p className="mt-2 text-sm text-white/60 leading-relaxed">{w.desc}</p>
                   <div className="mt-4 flex flex-wrap gap-2">

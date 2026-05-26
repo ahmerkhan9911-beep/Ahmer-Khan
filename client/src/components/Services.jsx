@@ -13,15 +13,15 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="relative py-28">
-      <div className="container mx-auto px-6 max-w-6xl">
+    <section id="services" className="relative py-16 sm:py-28">
+      <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         <SectionHeader
           eyebrow="Services"
           title={<>What I <span className="gradient-text">do best</span></>}
           subtitle="End-to-end product work — from first sketch to shipped interface."
         />
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
           {services.map((s, i) => (
             <motion.div
               key={s.title}
@@ -30,7 +30,7 @@ const Services = () => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.5, delay: i * 0.06 }}
               whileHover={{ y: -6 }}
-              className="group relative glass rounded-3xl p-7 overflow-hidden"
+              className="group relative glass rounded-3xl p-5 sm:p-7 overflow-hidden"
             >
               <div className="absolute -top-20 -right-20 h-40 w-40 rounded-full bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/30 group-hover:to-purple-500/20 blur-2xl transition-all duration-500" />
               <div className="relative">

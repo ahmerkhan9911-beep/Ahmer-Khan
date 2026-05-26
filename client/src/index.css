@@ -67,6 +67,7 @@
 
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
@@ -74,7 +75,14 @@
     color: var(--color-foreground);
     font-family: var(--font-sans);
     overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
     -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    overflow-x: hidden;
+    width: 100%;
   }
 
   h1, h2, h3, h4, h5 {

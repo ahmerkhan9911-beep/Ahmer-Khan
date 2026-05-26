@@ -79,44 +79,47 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-28 sm:pt-32 pb-16 sm:pb-20 overflow-hidden"
     >
       <div
         ref={spotlightRef}
         className="pointer-events-none absolute inset-0 -z-10 hidden md:block transition-[background] duration-300"
       />
 
+      {/* Background blobs — hidden on small mobile to prevent overflow */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute inset-0 grid-bg opacity-40 [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_70%)]" />
         <motion.div
           animate={reduced ? undefined : { y: [0, -30, 0], rotate: [0, 10, 0] }}
           transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-32 right-10 h-40 w-40 rounded-3xl bg-gradient-to-br from-cyan-400/30 to-blue-600/30 blur-2xl"
+          className="absolute top-32 right-0 sm:right-10 h-32 w-32 sm:h-40 sm:w-40 rounded-3xl bg-gradient-to-br from-cyan-400/30 to-blue-600/30 blur-2xl"
         />
         <motion.div
           animate={reduced ? undefined : { y: [0, 30, 0], rotate: [0, -8, 0] }}
           transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute bottom-32 left-10 h-52 w-52 rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/20 blur-2xl"
+          className="absolute bottom-32 left-0 sm:left-10 h-40 w-40 sm:h-52 sm:w-52 rounded-full bg-gradient-to-br from-purple-500/30 to-pink-500/20 blur-2xl"
         />
         <motion.div
           animate={reduced ? undefined : { scale: [1, 1.1, 1], opacity: [0.4, 0.6, 0.4] }}
           transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 h-[520px] w-[520px] rounded-full bg-gradient-to-br from-cyan-500/20 via-blue-600/10 to-purple-600/25 blur-3xl"
+          className="absolute top-1/3 left-1/2 -translate-x-1/2 h-[300px] w-[300px] sm:h-[520px] sm:w-[520px] rounded-full bg-gradient-to-br from-cyan-500/20 via-blue-600/10 to-purple-600/25 blur-3xl"
         />
       </div>
 
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
+      <div className="container mx-auto px-5 sm:px-6 max-w-6xl">
+        <div className="grid lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-12 items-center">
           <motion.div variants={container} initial="hidden" animate="show">
+            {/* Available badge */}
             <motion.div
               variants={item}
-              className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs text-white/80 mb-6"
+              className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs text-white/80 mb-5 sm:mb-6"
             >
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               Available for freelance work
             </motion.div>
 
-            <h1 className="font-display text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.05] tracking-tight">
+            {/* Headline — responsive sizing */}
+            <h1 className="font-display text-[clamp(2.2rem,10vw,3rem)] sm:text-6xl lg:text-7xl font-bold leading-[1.08] tracking-tight">
               <motion.span variants={item} className="block">
                 Hi, I'm <span className="gradient-text">Ahmer Khan</span>
               </motion.span>
@@ -128,19 +131,21 @@ const Hero = () => {
               </motion.span>
             </h1>
 
+            {/* Description */}
             <motion.p
               variants={item}
-              className="mt-6 max-w-xl text-base sm:text-lg text-white/60 leading-relaxed"
+              className="mt-5 sm:mt-6 max-w-xl text-sm sm:text-base lg:text-lg text-white/60 leading-relaxed"
             >
-              Web Developer & Designer passionate about building clean, responsive,
+              Web Developer &amp; Designer passionate about building clean, responsive,
               and unique websites. I turn ideas into fast, functional, and beautiful digital
               experiences.
             </motion.p>
 
-            <motion.div variants={item} className="mt-8 flex flex-wrap items-center gap-3">
+            {/* CTA buttons — stack on mobile */}
+            <motion.div variants={item} className="mt-6 sm:mt-8 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
               <MagneticButton
                 href="#works"
-                className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 px-6 py-3 text-sm font-semibold text-[#050816] hover:opacity-95 transition glow-cyan"
+                className="group inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 px-6 py-3 text-sm font-semibold text-[#050816] hover:opacity-95 transition glow-cyan w-full sm:w-auto"
               >
                 View Portfolio
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -149,15 +154,16 @@ const Hero = () => {
                 href="/ahmerCV.pdf"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold hover:bg-white/10 transition"
+                className="inline-flex items-center justify-center gap-2 rounded-full glass px-6 py-3 text-sm font-semibold hover:bg-white/10 transition w-full sm:w-auto"
               >
                 <Download className="h-4 w-4" /> Download CV
               </MagneticButton>
             </motion.div>
 
-            <motion.div variants={item} className="mt-10 flex items-center gap-4">
-              <span className="text-xs uppercase tracking-widest text-white/40">Follow</span>
-              <div className="h-px w-12 bg-white/20" />
+            {/* Social links — wrap-safe on mobile */}
+            <motion.div variants={item} className="mt-8 sm:mt-10 flex flex-wrap items-center gap-3 sm:gap-4">
+              <span className="text-xs uppercase tracking-widest text-white/40 hidden sm:inline">Follow</span>
+              <div className="h-px w-8 sm:w-12 bg-white/20 hidden sm:block" />
               {socialLinks.map(({ Icon, href, label }) => (
                 <motion.a
                   key={label}
@@ -176,7 +182,7 @@ const Hero = () => {
             </motion.div>
           </motion.div>
 
-          {/* Profile visual */}
+          {/* Profile visual — hidden on mobile and tablet, shown on lg */}
           <motion.div
             initial={{ opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}

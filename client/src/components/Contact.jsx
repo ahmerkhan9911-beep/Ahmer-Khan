@@ -16,7 +16,7 @@ const Toast = ({ message, onClose }) => (
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.5 }}
-      className="fixed bottom-8 right-8 bg-gradient-to-r from-cyan-400 to-purple-500 text-[#050816] px-6 py-4 rounded-2xl shadow-lg z-50"
+      className="fixed bottom-4 left-4 right-4 sm:bottom-8 sm:left-auto sm:right-8 bg-gradient-to-r from-cyan-400 to-purple-500 text-[#050816] px-5 py-4 rounded-2xl shadow-lg z-50"
     >
       <div className="flex items-center justify-between gap-4">
         <span className="font-medium">{message}</span>
@@ -63,8 +63,8 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="relative py-28">
-      <div className="container mx-auto px-6 max-w-5xl">
+    <section id="contact" className="relative py-16 sm:py-28">
+      <div className="container mx-auto px-4 sm:px-6 max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ const Contact = () => {
           transition={{ duration: 0.7 }}
           className="relative rounded-[2rem] overflow-hidden p-[1px] bg-gradient-to-br from-cyan-400/60 via-purple-500/40 to-pink-500/60"
         >
-          <div className="relative rounded-[calc(2rem-1px)] bg-[#070A12] p-10 sm:p-14 noise">
+          <div className="relative rounded-[calc(2rem-1px)] bg-[#070A12] p-5 sm:p-10 lg:p-14 noise">
             <div className="absolute -top-32 -right-20 h-80 w-80 rounded-full bg-cyan-500/20 blur-3xl" />
             <div className="absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-purple-500/20 blur-3xl" />
 
@@ -82,7 +82,7 @@ const Contact = () => {
                   <span className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
                   Get in touch
                 </div>
-                <h2 className="font-display text-4xl sm:text-5xl font-bold leading-[1.05]">
+                <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold leading-[1.08]">
                   Let's build something <span className="gradient-text">exceptional</span>.
                 </h2>
                 <p className="mt-4 text-white/60 max-w-md">
@@ -93,14 +93,14 @@ const Contact = () => {
                 <div className="mt-8 space-y-3">
                   <a
                     href="mailto:ahmerkhan9911@gmail.com"
-                    className="flex items-center gap-3 text-white/80 hover:text-white"
+                    className="flex items-center gap-3 text-white/80 hover:text-white break-all sm:break-normal"
                   >
                     <span className="grid h-10 w-10 place-items-center rounded-xl glass">
                       <Mail className="h-4 w-4" />
                     </span>
-                    ahmerkhan9911@gmail.com
+                    <span className="text-sm sm:text-base break-all">ahmerkhan9911@gmail.com</span>
                   </a>
-                  <div className="flex items-center gap-3 pt-2">
+                  <div className="flex flex-wrap items-center gap-3 pt-2">
                     {socialLinks.map(({ Icon, href }, i) => (
                       <a
                         key={i}
