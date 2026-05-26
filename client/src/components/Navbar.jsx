@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import logo from "../assets/logo.svg";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -72,11 +73,12 @@ const Navbar = () => {
         >
           <div className="relative z-10 flex w-full items-center justify-between">
             {/* Logo */}
-            <a href="#home" className="flex items-center gap-2 font-display text-lg font-bold">
-              <span className="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 text-[#050816]">
-                A
-              </span>
-              <span className="hidden sm:inline">Ahmer<span className="gradient-text">.</span></span>
+            <a href="#home" className="flex items-center">
+              <img
+                src={logo}
+                alt="Ahmer logo"
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
             </a>
 
             {/* Desktop links */}

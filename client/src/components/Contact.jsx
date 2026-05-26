@@ -1,5 +1,4 @@
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail, Send } from "lucide-react";
 import {
@@ -39,27 +38,68 @@ const socialLinks = [
 ];
 
 const Contact = () => {
-  const form = useRef();
   const [toastMessage, setToastMessage] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
+    
+    const formData = new FormData(e.target);
+    const name = formData.get("user_name");
+    const email = formData.get("user_email");
+    const subject = formData.get("subject");
+    const message = formData.get("message");
 
-    emailjs
-      .sendForm(
-        "ahmerPortfolio",
-        "template_9yhuzhs",
-        form.current,
-        "gkGuSGi10eOfONqTt"
-      )
-      .then(() => {
-        setToastMessage("🚀 Message sent successfully!");
-        form.current.reset();
-      })
-      .catch((error) => {
-        console.error(error.text);
-        setToastMessage("❌ Failed to send message. Please try again.");
+    if (!name || !email || !subject || !message) {
+      setToastMessage("❌ Please fill all fields.");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setToastMessage("❌ Please enter a valid email.");
+      return;
+    }
+
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setToastMessage("❌ Email service is not configured. Please check environment variables.");
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name,
+          email,
+          subject,
+          message,
+          from_name: "Ahmer Portfolio",
+        }),
       });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setToastMessage("🚀 Message sent successfully. I'll get back to you soon.");
+        e.target.reset();
+      } else {
+        setToastMessage(`❌ ${result.message || "Failed to send message. Please try again."}`);
+      }
+    } catch (error) {
+      console.error(error);
+      setToastMessage("❌ Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -117,7 +157,6 @@ const Contact = () => {
               </div>
 
               <form
-                ref={form}
                 onSubmit={sendEmail}
                 className="glass rounded-2xl p-6 space-y-4"
               >
@@ -163,9 +202,11 @@ const Contact = () => {
                 </div>
                 <button
                   type="submit"
-                  className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-500 px-5 py-3 text-sm font-semibold text-[#050816] hover:opacity-90 transition"
+                  disabled={isSubmitting}
+                  className="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-500 px-5 py-3 text-sm font-semibold text-[#050816] hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  Send message <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  {isSubmitting ? "Sending..." : "Send message"}
+                  {!isSubmitting && <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />}
                 </button>
               </form>
             </div>

@@ -1,0 +1,20 @@
+<svg width="100%" viewBox="0 0 680 180" role="img" xmlns="http://www.w3.org/2000/svg" style="">
+<title style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">AHMER. — Wordmark Logo</title>
+<desc style="fill:rgb(0, 0, 0);stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto">Premium wordmark logo reading AHMER. with white bold sans-serif text and a cyan-to-purple gradient accent dot, on transparent background</desc>
+<defs>
+  <linearGradient id="dotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#00D4FF"/>
+    <stop offset="100%" style="stop-color:#BF5AF2"/>
+  </linearGradient>
+  <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#FFFFFF"/>
+    <stop offset="85%" style="stop-color:#E8EEFF"/>
+    <stop offset="100%" style="stop-color:#C8CFFF"/>
+  </linearGradient>
+</defs>
+
+<text x="340" y="122" text-anchor="middle" font-family="'SF Pro Display','Helvetica Neue','Inter',Arial,sans-serif" font-size="96" font-weight="700" letter-spacing="12" fill="url(#textGrad)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;SF Pro Display&quot;, &quot;Helvetica Neue&quot;, Inter, Arial, sans-serif;font-size:96px;font-weight:700;text-anchor:middle;dominant-baseline:auto">AHMER</text>
+
+<circle cx="574" cy="112" r="9" fill="url(#dotGrad)" style="stroke:none;color:rgb(255, 255, 255);stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;opacity:1;font-family:&quot;Anthropic Sans&quot;, -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, sans-serif;font-size:16px;font-weight:400;text-anchor:start;dominant-baseline:auto"/>
+
+</svg>
