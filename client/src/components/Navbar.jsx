@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import logo from "../assets/logo.svg";
+import mobileLogo from "../assets/mobile-logo.png";
 
 const links = [
   { href: "#home", label: "Home" },
@@ -74,10 +75,17 @@ const Navbar = () => {
           <div className="relative z-10 flex w-full items-center justify-between">
             {/* Logo */}
             <a href="#home" className="flex items-center">
+              {/* Desktop logo */}
               <img
                 src={logo}
                 alt="Ahmer logo"
-                className="h-8 sm:h-9 w-auto object-contain"
+                className="hidden md:block h-8 sm:h-9 w-auto object-contain"
+              />
+              {/* Mobile logo */}
+              <img
+                src={mobileLogo}
+                alt="Ahmer mobile logo"
+                className="md:hidden h-10 w-auto object-contain"
               />
             </a>
 
@@ -136,6 +144,21 @@ const Navbar = () => {
               className="md:hidden mobile-menu-panel relative z-[999] mx-auto mt-3 w-full max-w-6xl rounded-3xl p-5 pointer-events-auto"
             >
               <div className="relative z-10">
+                {/* Mobile menu header: logo + close */}
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
+                  <img
+                    src={mobileLogo}
+                    alt="Ahmer mobile logo"
+                    className="h-11 w-auto object-contain"
+                  />
+                  <button
+                    onClick={() => setOpen(false)}
+                    className="grid h-10 w-10 place-items-center rounded-full bg-white/10"
+                    aria-label="Close menu"
+                  >
+                    <X className="h-5 w-5" />
+                  </button>
+                </div>
                 <ul className="flex flex-col gap-1.5">
                   {links.map((l) => (
                     <li key={l.href}>
