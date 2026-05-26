@@ -43,8 +43,8 @@ const Navbar = () => {
       className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-4"
     >
       <nav
-        className={`flex w-full max-w-6xl items-center justify-between rounded-full border border-white/10 px-5 py-3 transition-all ${
-          scrolled ? "glass shadow-lg shadow-black/30" : "bg-transparent"
+        className={`glass-navbar flex w-full max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all ${
+          scrolled ? "shadow-lg shadow-black/30" : "backdrop-blur-none"
         }`}
       >
         <a href="#home" className="flex items-center gap-2 font-display text-lg font-bold">
@@ -100,7 +100,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute top-20 left-4 right-4 md:hidden glass rounded-2xl p-4"
+            className="absolute top-20 left-4 right-4 md:hidden glass-navbar rounded-2xl p-4"
           >
             <ul className="flex flex-col gap-1">
               {links.map((l) => (

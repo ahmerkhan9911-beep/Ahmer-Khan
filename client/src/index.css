@@ -140,3 +140,20 @@
     .gradient-text { animation: none; }
   }
 }
+
+/* ── Production-safe glassmorphism for navbar ─────────────────────────────
+   Placed outside @layer so it always has higher specificity than utility
+   classes and won't be purged/reordered by Tailwind v4's layer system.  */
+.glass-navbar {
+  background: rgba(11, 16, 32, 0.55) !important;
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-navbar {
+    background: rgba(11, 16, 32, 0.92) !important;
+  }
+}
