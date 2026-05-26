@@ -143,17 +143,37 @@
 
 /* ── Production-safe glassmorphism for navbar ─────────────────────────────
    Placed outside @layer so it always has higher specificity than utility
-   classes and won't be purged/reordered by Tailwind v4's layer system.  */
+   classes and won't be purged/reordered by Tailwind v4's layer system.
+   All visual properties use !important to prevent Tailwind overrides.    */
 .glass-navbar {
-  background: rgba(11, 16, 32, 0.55) !important;
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.35);
+  isolation: isolate;
+  background: rgba(8, 12, 28, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow:
+    0 8px 40px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
 }
 
-@supports not (backdrop-filter: blur(1px)) {
+.glass-navbar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.10),
+      rgba(255, 255, 255, 0.03)
+    );
+  pointer-events: none;
+}
+
+/* Fallback: if backdrop-filter is not supported, use a near-opaque bg */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
   .glass-navbar {
-    background: rgba(11, 16, 32, 0.92) !important;
+    background: rgba(8, 12, 28, 0.94) !important;
   }
 }
