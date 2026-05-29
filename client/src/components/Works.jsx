@@ -117,8 +117,11 @@ const Works = () => {
                 <div className="relative aspect-[16/10] overflow-hidden bg-black/40">
                   <img
                     src={w.image}
-                    alt={w.title}
+                    alt={`${w.title} — ${w.desc}`}
                     loading="lazy"
+                    decoding="async"
+                    width={640}
+                    height={400}
                     className="h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.07]"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-90 transition-opacity" />

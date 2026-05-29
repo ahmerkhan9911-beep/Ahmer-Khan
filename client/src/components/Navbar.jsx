@@ -78,13 +78,17 @@ const Navbar = () => {
               {/* Desktop logo */}
               <img
                 src={logo}
-                alt="Ahmer logo"
+                alt="Ahmer Khan logo"
+                width={120}
+                height={36}
                 className="hidden md:block h-8 sm:h-9 w-auto object-contain"
               />
               {/* Mobile logo */}
               <img
                 src={mobileLogo}
-                alt="Ahmer mobile logo"
+                alt="Ahmer Khan logo"
+                width={40}
+                height={40}
                 className="md:hidden h-10 w-auto object-contain"
               />
             </a>
@@ -148,7 +152,9 @@ const Navbar = () => {
                 <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10">
                   <img
                     src={mobileLogo}
-                    alt="Ahmer mobile logo"
+                    alt="Ahmer Khan logo"
+                    width={44}
+                    height={44}
                     className="h-11 w-auto object-contain"
                   />
                   <button

@@ -223,8 +223,12 @@ const Hero = () => {
                 {/* Image — NOT clipped so head/arms aren't cut */}
                 <img
                   src={ahmerImg}
-                  alt="Ahmer Khan"
+                  alt="Ahmer Khan — Full Stack Web Developer"
                   loading="eager"
+                  fetchpriority="high"
+                  decoding="async"
+                  width={440}
+                  height={484}
                   className="absolute bottom-0 left-1/2 h-[110%] w-auto max-w-none object-contain object-bottom select-none pointer-events-none drop-shadow-[0_25px_45px_rgba(0,0,0,0.55)]"
                   style={{ transform: "translate(-50%, 0) translateZ(60px)" }}
                 />

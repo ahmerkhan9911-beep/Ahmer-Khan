@@ -1,14 +1,16 @@
 // src/App.jsx
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Services from "./components/Services";
-import Works from "./components/Works";
-import Testimonials from "./components/Testimonials";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
+
+// Lazy-load below-the-fold sections to reduce initial JS bundle
+const About = lazy(() => import("./components/About"));
+const Skills = lazy(() => import("./components/Skills"));
+const Services = lazy(() => import("./components/Services"));
+const Works = lazy(() => import("./components/Works"));
+const Testimonials = lazy(() => import("./components/Testimonials"));
+const Contact = lazy(() => import("./components/Contact"));
+const Footer = lazy(() => import("./components/Footer"));
 
 function App() {
   return (
@@ -16,14 +18,18 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Services />
-        <Works />
-        <Testimonials />
-        <Contact />
+        <Suspense fallback={null}>
+          <About />
+          <Skills />
+          <Services />
+          <Works />
+          <Testimonials />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

@@ -31,10 +31,10 @@ const Toast = ({ message, onClose }) => (
 );
 
 const socialLinks = [
-  { Icon: FaInstagram, href: "https://www.instagram.com/ahmer_011/" },
-  { Icon: FaFacebookF, href: "https://www.facebook.com/ahmer.khan.1088/" },
-  { Icon: FaTwitter, href: "https://x.com" },
-  { Icon: FaLinkedinIn, href: "https://www.linkedin.com/in/ahmer-khan-0b4446318?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
+  { Icon: FaInstagram, href: "https://www.instagram.com/ahmer_011/", label: "Instagram" },
+  { Icon: FaFacebookF, href: "https://www.facebook.com/ahmer.khan.1088/", label: "Facebook" },
+  { Icon: FaTwitter, href: "https://x.com", label: "Twitter" },
+  { Icon: FaLinkedinIn, href: "https://www.linkedin.com/in/ahmer-khan-0b4446318?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", label: "LinkedIn" },
 ];
 
 const Contact = () => {
@@ -141,12 +141,13 @@ const Contact = () => {
                     <span className="text-sm sm:text-base break-all">ahmerkhan9911@gmail.com</span>
                   </a>
                   <div className="flex flex-wrap items-center gap-3 pt-2">
-                    {socialLinks.map(({ Icon, href }, i) => (
+                    {socialLinks.map(({ Icon, href, label }, i) => (
                       <a
                         key={i}
                         href={href}
                         target="_blank"
                         rel="noreferrer"
+                        aria-label={label}
                         className="grid h-10 w-10 place-items-center rounded-xl glass hover:bg-white/10 transition"
                       >
                         <Icon className="h-4 w-4" />
@@ -161,9 +162,10 @@ const Contact = () => {
                 className="glass rounded-2xl p-6 space-y-4"
               >
                 <div>
-                  <label className="text-xs uppercase tracking-widest text-white/50">Name</label>
+                  <label htmlFor="contact-name" className="text-xs uppercase tracking-widest text-white/50">Name</label>
                   <input
                     type="text"
+                    id="contact-name"
                     name="user_name"
                     required
                     className="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm outline-none focus:border-cyan-400/60 transition text-white"
@@ -171,9 +173,10 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-xs uppercase tracking-widest text-white/50">Email</label>
+                  <label htmlFor="contact-email" className="text-xs uppercase tracking-widest text-white/50">Email</label>
                   <input
                     type="email"
+                    id="contact-email"
                     name="user_email"
                     required
                     className="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm outline-none focus:border-cyan-400/60 transition text-white"
@@ -181,9 +184,10 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-xs uppercase tracking-widest text-white/50">Subject</label>
+                  <label htmlFor="contact-subject" className="text-xs uppercase tracking-widest text-white/50">Subject</label>
                   <input
                     type="text"
+                    id="contact-subject"
                     name="subject"
                     required
                     className="mt-1 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm outline-none focus:border-cyan-400/60 transition text-white"
@@ -191,8 +195,9 @@ const Contact = () => {
                   />
                 </div>
                 <div>
-                  <label className="text-xs uppercase tracking-widest text-white/50">Message</label>
+                  <label htmlFor="contact-message" className="text-xs uppercase tracking-widest text-white/50">Message</label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     required
                     rows={4}
