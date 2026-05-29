@@ -124,10 +124,10 @@ const Hero = () => {
                 Hi, I'm <span className="gradient-text">Ahmer Khan</span>
               </motion.span>
               <motion.span variants={item} className="block text-white/90">
-                crafting digital
+                building modern web
               </motion.span>
               <motion.span variants={item} className="block text-white/90">
-                experiences.
+                applications.
               </motion.span>
             </h1>
 
@@ -136,9 +136,9 @@ const Hero = () => {
               variants={item}
               className="mt-5 sm:mt-6 max-w-xl text-sm sm:text-base lg:text-lg text-white/60 leading-relaxed"
             >
-              Web Developer &amp; Designer passionate about building clean, responsive,
-              and unique websites. I turn ideas into fast, functional, and beautiful digital
-              experiences.
+              Full Stack Web Developer focused on building fast, responsive, and
+              scalable websites using React, Node.js, Express, and MongoDB. I turn
+              ideas into real, functional web applications with clean code.
             </motion.p>
 
             {/* CTA buttons — stack on mobile */}

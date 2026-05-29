@@ -11,7 +11,7 @@ const testimonials = [
   },
   {
     quote:
-      "Great eye for detail and a strong sense of UX. The final product felt thoughtful and well-crafted.",
+      "Great eye for detail and a strong sense of clean architecture. The final product felt thoughtful and well-crafted.",
     name: "Kalvin Piterson",
     role: "Business Owner",
   },

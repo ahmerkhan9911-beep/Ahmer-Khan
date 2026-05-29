@@ -63,7 +63,7 @@ const works = [
   {
     title: "Code & Canvas",
     category: "Website",
-    desc: "Creative studio site blending code and design into a unified experience.",
+    desc: "Creative studio site with dynamic animations and a refined dark aesthetic.",
     tech: ["React", "Framer Motion"],
     image: "/portfolio8.png",
     href: "https://code-and-canvas-seven.vercel.app/",
@@ -96,7 +96,7 @@ const Works = () => {
         <SectionHeader
           eyebrow="Selected Works"
           title={<>Recent <span className="gradient-text">projects</span></>}
-          subtitle="A selection of work spanning marketing sites, product UIs and e-commerce."
+          subtitle="A selection of work spanning marketing sites, web applications, and e-commerce."
         />
 
         <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">

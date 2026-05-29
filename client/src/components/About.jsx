@@ -15,7 +15,7 @@ const About = () => {
       <div className="container mx-auto px-4 sm:px-6 max-w-6xl">
         <SectionHeader
           eyebrow="About me"
-          title={<>The person <span className="gradient-text">behind the pixels</span></>}
+          title={<>The developer <span className="gradient-text">behind the code</span></>}
         />
 
         <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10 items-start">
@@ -27,16 +27,16 @@ const About = () => {
             className="glass rounded-3xl p-5 sm:p-8"
           >
             <h3 className="font-display text-xl sm:text-2xl font-semibold mb-4">
-              I'm a Web Developer who loves building clean, responsive & unique websites.
+              I'm a Full Stack Web Developer who builds clean, responsive, and functional web applications.
             </h3>
             <p className="text-white/70 leading-relaxed">
-              Passionate about creating user-friendly, responsive interfaces with HTML, CSS,
-              JavaScript, and React. Currently learning full-stack development using Node.js and
-              MongoDB, with a focus on writing clean and efficient code.
+              I work with modern frontend and backend technologies including React, Vite,
+              Tailwind CSS, Node.js, Express, MongoDB, and MySQL. I enjoy turning ideas into
+              real, usable products with clean code, smooth user experiences, and scalable architecture.
             </p>
             <p className="mt-4 text-white/70 leading-relaxed">
-              I believe in continuous learning, solving real problems, and turning ideas into
-              impactful digital solutions through creative thinking and code.
+              I believe in continuous learning, solving real problems, and building applications
+              that make a real impact — from concept to deployment.
             </p>
 
             <a

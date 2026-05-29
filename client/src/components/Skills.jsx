@@ -3,19 +3,24 @@ import { SectionHeader } from "./Section";
 
 const groups = [
   {
-    title: "Design",
+    title: "Frontend",
     color: "from-cyan-400 to-blue-500",
-    items: ["Figma", "UI/UX", "Wireframing", "Prototyping", "UX Research"],
+    items: ["React", "Vite", "JavaScript", "Tailwind CSS", "HTML", "CSS", "Bootstrap"],
   },
   {
-    title: "Frontend",
+    title: "Backend",
     color: "from-purple-400 to-pink-500",
-    items: ["React", "Vite", "Tailwind CSS", "Framer Motion", "JavaScript"],
+    items: ["Node.js", "Express.js", "REST APIs", "JWT Auth", "API Integration"],
+  },
+  {
+    title: "Database",
+    color: "from-amber-400 to-orange-500",
+    items: ["MongoDB", "MySQL", "Database Design", "CRUD Operations"],
   },
   {
     title: "Tools",
     color: "from-emerald-400 to-cyan-500",
-    items: ["GitHub", "VS Code", "Vercel", "Firebase", "MongoDB"],
+    items: ["GitHub", "VS Code", "Postman", "Vercel", "Railway", "Azure"],
   },
 ];
 
@@ -29,7 +34,7 @@ const Skills = () => {
           subtitle="The technologies and tools I use to bring ideas to life."
         />
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {groups.map((g, gi) => (
             <motion.div
               key={g.title}

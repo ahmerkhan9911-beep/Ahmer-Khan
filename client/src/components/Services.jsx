@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { SectionHeader } from "./Section";
-import { Palette, Globe, Layout, Code2, Smartphone, ShoppingBag } from "lucide-react";
+import { Server, Globe, Layout, Code2, ShoppingBag, LayoutDashboard } from "lucide-react";
 
 const services = [
-  { icon: Palette, title: "UI/UX Design", desc: "Designing thoughtful, accessible interfaces grounded in user research." },
-  { icon: Layout, title: "Website Design", desc: "Modern responsive layouts that feel polished on every screen." },
-  { icon: Code2, title: "Frontend Development", desc: "Production-ready React, Vite and Tailwind builds with clean code." },
-  { icon: Smartphone, title: "Web & Mobile UI", desc: "Responsive UIs for web and native-feeling mobile experiences." },
-  { icon: Globe, title: "Landing Page Design", desc: "High-converting landing pages crafted around your brand story." },
-  { icon: ShoppingBag, title: "E-commerce", desc: "Custom storefronts with cart, payments and admin flows." },
+  { icon: Code2, title: "Full Stack Web Development", desc: "Complete frontend and backend web applications using modern JavaScript technologies." },
+  { icon: Layout, title: "Frontend Development", desc: "Responsive, fast, and modern user interfaces built with React, Vite, and Tailwind CSS." },
+  { icon: Server, title: "Backend Development", desc: "Secure APIs, authentication, database integration, and server-side logic using Node.js and Express." },
+  { icon: Globe, title: "MERN Stack Applications", desc: "Scalable web apps using MongoDB, Express, React, and Node.js." },
+  { icon: ShoppingBag, title: "Ecommerce Development", desc: "Product listings, cart systems, user authentication, admin panels, and order management." },
+  { icon: LayoutDashboard, title: "Dashboard / Admin Panels", desc: "Clean and functional dashboards for managing users, data, orders, and business workflows." },
 ];
 
 const Services = () => {
@@ -18,7 +18,7 @@ const Services = () => {
         <SectionHeader
           eyebrow="Services"
           title={<>What I <span className="gradient-text">do best</span></>}
-          subtitle="End-to-end product work — from first sketch to shipped interface."
+          subtitle="End-to-end development — from concept to deployed, production-ready application."
         />
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">

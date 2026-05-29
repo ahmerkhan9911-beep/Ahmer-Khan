@@ -126,8 +126,8 @@ const Contact = () => {
                   Let's build something <span className="gradient-text">exceptional</span>.
                 </h2>
                 <p className="mt-4 text-white/60 max-w-md">
-                  Have a project in mind, or just want to say hi? My inbox is always open —
-                  I'll get back to you as soon as I can.
+                  Have a project in mind? I can help you build a modern website or full stack
+                  web application. My inbox is always open — I'll get back to you as soon as I can.
                 </p>
 
                 <div className="mt-8 space-y-3">
